@@ -17,17 +17,43 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 public class Players {
+	/**Метка вводимого игроком числа при его ходе*/
 	private Label enteredNumberLabel;
-	private Label playerLabel1,playerLabel2;
-	private Text playerText1,playerText2;
-	private Font passivePlayerFont,activePlayerFont;
-	private int digitsInLabel=0,cows,bulls;//кол-во введенных цифр, кол-во коров,кол-во быков
-	private int playerTurn=1,win;//ход игрока(1-первый ходит,2-второй),флаг победы
-	private String correctNumber1;//загаданное число игрока 1
-	private String correctNumber2;//загаданное число игрока 2
+	/**Метка текста для первого игрока*/
+	private Label playerLabel1;
+	/**Метка текста для второго игрока*/
+	private Label playerLabel2;
+	/** Текстовое поле, в котором отображается информация о ходах игрока 1*/
+	private Text playerText1;
+	/**Текстовое поле, в котором отображается информация о ходах игрока 1*/
+	private Text playerText2;
+	/**Шрифт для текста пассивного игрока*/
+	private Font passivePlayerFont;
+	/**Шрифт для текста активного игрока */
+	private Font activePlayerFont;
+	/**Количество цифр в enteredNumberLabel*/
+	private int digitsInLabel=0;
+	/**Количество коров в числе*/
+	private int cows;
+	/**Количество быков в числе*/
+	private int bulls;
+	/**Ход игрока(1-первый игрок, 2-второй игрок*/
+	private int playerTurn=1;
+	/**Флаг победы(1-первый игрок выиграл,2-второй,3-ничья)*/
+	private int win=0;
+	/**Загаданное число первого игрока*/
+	private String correctNumber1;
+	/**Загаданное число второго игрока*/
+	private String correctNumber2;
+	/**Оболочка, в которой происходит отображение программы*/
 	private Shell shell;
+	/**Дисплей, который использует оболочка*/
 	private Display display;
-	
+	/**Конструктор, инициализирующий переменные и очищающий оболочку экрана
+	 * @param display- дисплей
+	 * @param shell- оболочка экрана, в ней отображается программа
+	 * @param string1- загаданное число первого игрока
+	 * @param string2- загаданное число второго игрока*/
 	public Players(Display display, Shell shell,String string1,String string2)
 	{
 		for (Control kid : shell.getChildren())
@@ -42,11 +68,12 @@ public class Players {
 		playerLabel2 = new Label(shell, SWT.NONE);
 		playerText1=new Text(shell,SWT.READ_ONLY|SWT.CENTER|SWT.V_SCROLL);
 		playerText2=new Text(shell,SWT.READ_ONLY|SWT.CENTER|SWT.V_SCROLL);
-		passivePlayerFont = new Font( shell.getDisplay(), new FontData( "Arial", 16, SWT.NORMAL ) );
+		passivePlayerFont = new Font( shell.getDisplay(), new FontData( "Arial", 16, SWT.NORMAL ));
 		activePlayerFont=new Font( shell.getDisplay(), new FontData( "Arial", 20, SWT.NORMAL ) );
 	}
-
-	public void Show(){
+	/**Метод, который, который отображает окно игры и усанавливает обработчики нажатия кнопок*/
+	public void Show()
+	{
 		InputStream is=null;
 		try {
 			is = Files.newInputStream(Paths.get("Images/players.jpg"));
@@ -59,29 +86,23 @@ public class Players {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		Font buttonFont = new Font( shell.getDisplay(), new FontData( "Arial", 12, SWT.NORMAL ) );
-		
 		GridLayout mainLayout=new GridLayout();
 		mainLayout.numColumns=10;
 		shell.setLayout(mainLayout);
 		shell.setBackgroundImage(backgroundImage);
 		mainLayout.marginLeft=35;
 		mainLayout.marginTop=20;
-		
-		
 		GridData griddataPlayerLabel1=new GridData();
 		griddataPlayerLabel1.horizontalSpan=5;
 		griddataPlayerLabel1.widthHint=350;
 		griddataPlayerLabel1.heightHint=40;
-		
 		playerLabel1.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_WHITE));
 		playerLabel1.setForeground(shell.getDisplay().getSystemColor(SWT.COLOR_RED));
 		playerLabel1.setText("Игрок 1");
 		playerLabel1.setFont(activePlayerFont);
 		playerLabel1.setAlignment(SWT.CENTER);
 		playerLabel1.setLayoutData(griddataPlayerLabel1);
-		
 		GridData griddataPlayerLabel2=new GridData();
 		griddataPlayerLabel2.horizontalSpan=5;
 		griddataPlayerLabel2.widthHint=350;
@@ -91,28 +112,24 @@ public class Players {
 		playerLabel2.setFont(passivePlayerFont);
 		playerLabel2.setAlignment(SWT.CENTER);
 		playerLabel2.setLayoutData(griddataPlayerLabel2);
-		
 		GridData griddataPlayerText1=new GridData();
 		griddataPlayerText1.horizontalSpan=5;
 		griddataPlayerText1.heightHint=450;
 		griddataPlayerText1.widthHint=315;
-		
 		playerText1.setFont(passivePlayerFont);
 		playerText1.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_WHITE));
 		playerText1.setLayoutData(griddataPlayerText1);
-		
 		GridData griddataPlayerText2=new GridData();
 		griddataPlayerText2.horizontalSpan=5;
 		griddataPlayerText2.heightHint=450;
 		griddataPlayerText2.widthHint=315;
-		
-		//Label playerLabel = new Label(player, SWT.NONE);
 		playerText2.setFont(passivePlayerFont);
 		playerText2.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_WHITE));
 		playerText2.setLayoutData(griddataPlayerText2);
 		enteredNumberLabel=new Label(shell, SWT.NONE);
 		enteredNumberLabel.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_WHITE));
-		Font boldFont2 = new Font( enteredNumberLabel.getDisplay(), new FontData( "Arial", 36, SWT.NORMAL ) );
+		Font boldFont2 = new Font( enteredNumberLabel.getDisplay(), 
+				new FontData( "Arial", 36, SWT.NORMAL ) );
 		enteredNumberLabel.setAlignment(SWT.CENTER | SWT.VERTICAL);
 		enteredNumberLabel.setFont(boldFont2);
 		GridData griddataEnteredNumberLabel=new GridData();
@@ -121,7 +138,6 @@ public class Players {
 		griddataEnteredNumberLabel.widthHint=640;
 		griddataEnteredNumberLabel.horizontalSpan=9;
 		enteredNumberLabel.setLayoutData(griddataEnteredNumberLabel);
-		
 		GridData griddataButtonDelete=new GridData();
 		griddataButtonDelete.horizontalAlignment=GridData.FILL;
 		griddataButtonDelete.heightHint=60;
@@ -138,12 +154,12 @@ public class Players {
 	                        org.eclipse.swt.events.SelectionEvent e) {
 	                	if(digitsInLabel>0)
 	                    {
-	                		enteredNumberLabel.setText(enteredNumberLabel.getText().substring(0, enteredNumberLabel.getText().length()-1));
+	                		enteredNumberLabel.setText(enteredNumberLabel.getText().substring(0,
+	                				enteredNumberLabel.getText().length()-1));
 	                		digitsInLabel--;
 	                    }
 	                }
 	            });
-		
 		GridData griddataButton0=new GridData();
 		griddataButton0.horizontalAlignment=GridData.FILL;
 		griddataButton0.heightHint=60;
@@ -154,7 +170,6 @@ public class Players {
 		button0.setFont(buttonFont);
 		button0.setLayoutData(griddataButton0);
 		buttonPressed(button0);
-		
 		GridData griddataButton1=new GridData();
 		griddataButton1.horizontalAlignment=GridData.FILL;
 		griddataButton1.heightHint=60;
@@ -165,7 +180,6 @@ public class Players {
 		button1.setFont(buttonFont);
 		button1.setLayoutData(griddataButton1);
 		buttonPressed(button1);
-		
 		GridData griddataButton2=new GridData();
 		griddataButton2.horizontalAlignment=GridData.FILL;
 		griddataButton2.heightHint=60;
@@ -176,7 +190,6 @@ public class Players {
 		button2.setFont(buttonFont);
 		button2.setLayoutData(griddataButton2);
 		buttonPressed(button2);
-		
 		GridData griddataButton3=new GridData();
 		griddataButton3.horizontalAlignment=GridData.FILL;
 		griddataButton3.heightHint=60;
@@ -187,7 +200,6 @@ public class Players {
 		button3.setFont(buttonFont);
 		button3.setLayoutData(griddataButton3);
 		buttonPressed(button3);
-		
 		GridData griddataButton4=new GridData();
 		griddataButton4.horizontalAlignment=GridData.FILL;
 		griddataButton4.heightHint=60;
@@ -198,7 +210,6 @@ public class Players {
 		button4.setFont(buttonFont);
 		button4.setLayoutData(griddataButton4);
 		buttonPressed(button4);
-		
 		GridData griddataButton5=new GridData();
 		griddataButton5.horizontalAlignment=GridData.FILL;
 		griddataButton5.heightHint=60;
@@ -209,7 +220,6 @@ public class Players {
 		button5.setFont(buttonFont);
 		button5.setLayoutData(griddataButton5);
 		buttonPressed(button5);
-		
 		GridData griddataButton6=new GridData();
 		griddataButton6.horizontalAlignment=GridData.FILL;
 		griddataButton6.heightHint=60;
@@ -220,7 +230,6 @@ public class Players {
 		button6.setFont(buttonFont);
 		button6.setLayoutData(griddataButton6);
 		buttonPressed(button6);
-		
 		GridData griddataButton7=new GridData();
 		griddataButton7.horizontalAlignment=GridData.FILL;
 		griddataButton7.heightHint=60;
@@ -231,7 +240,6 @@ public class Players {
 		button7.setFont(buttonFont);
 		button7.setLayoutData(griddataButton7);
 		buttonPressed(button7);
-		
 		GridData griddataButton8=new GridData();
 		griddataButton8.horizontalAlignment=GridData.FILL;
 		griddataButton8.heightHint=60;
@@ -242,7 +250,6 @@ public class Players {
 		button8.setFont(buttonFont);
 		button8.setLayoutData(griddataButton8);
 		buttonPressed(button8);
-		
 		GridData griddataButton9=new GridData();
 		griddataButton9.horizontalAlignment=GridData.FILL;
 		griddataButton9.heightHint=60;
@@ -253,7 +260,6 @@ public class Players {
 		button9.setFont(buttonFont);
 		button9.setLayoutData(griddataButton9);
 		buttonPressed(button9);
-		
 		GridData griddataButtonTurn=new GridData();
 		griddataButtonTurn.verticalIndent=40;
 		griddataButtonTurn.heightHint=60;
@@ -336,13 +342,11 @@ public class Players {
 			playerLabel2.setForeground(shell.getDisplay().getSystemColor(SWT.COLOR_BLACK));
 			playerText2.append("\n"+enteredNumberLabel.getText()+" "+ bulls+"б. "+cows+"к.");
 			if(bulls==4) win+=2;  
-			
 			if(win>0) //если хотя бы 1 из игроков угадал число
 				{
 					Winner winner=new Winner(display,shell,win,1);
 					winner.Show();
 				}
-			
 			else{
     			enteredNumberLabel.setText("");
     			digitsInLabel=0;

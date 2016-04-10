@@ -22,14 +22,20 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
 public class Menu {
+	/** Оболочка, в которой происходит отображение программы */
 	private Shell shell;
+	/** Дисплей, который использует оболочка*/
 	private Display display;
-	
+	/** Конструктор, инициализирующий переменные
+	 * @param display - дисплей
+	 * @param shell - оболочка экрана, в ней отображается программа
+	 */
 	Menu(Display display, Shell shell)
 	{
 		this.shell=shell;
 		this.display=display;	
 	}
+	/**Метод, который, который отображает окно меню и настраивает обработку кнопок*/
 	public void Show()
 	{
 		for (Control kid : shell.getChildren())
@@ -48,14 +54,14 @@ public class Menu {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		Font buttonFont = new Font( shell.getDisplay(), new FontData( "Times New Roman", 14, SWT.NORMAL ) );
+		Font buttonFont = new Font( shell.getDisplay(), 
+				new FontData( "Times New Roman", 14, SWT.NORMAL ) );
 		shell.setBackgroundImage(backgroundImage);
 		GridLayout mainlayout=new GridLayout();
 		mainlayout.numColumns=1;
 		shell.setLayout(mainlayout);
 		mainlayout.marginLeft=220;
 		mainlayout.marginTop=315;
-		
 		GridData griddataButtonRules=new GridData();
 		griddataButtonRules.horizontalAlignment=GridData.CENTER;
 		griddataButtonRules.heightHint=65;
@@ -65,7 +71,6 @@ public class Menu {
 		buttonRules.setText("Правила игры");
 		buttonRules.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
 		buttonRules.setLayoutData(griddataButtonRules);
-		
 		GridData griddataButtonComputer=new GridData();
 		griddataButtonComputer.horizontalAlignment=GridData.CENTER;
 		griddataButtonComputer.heightHint=65;
@@ -75,7 +80,6 @@ public class Menu {
 		buttonComputer.setFont(buttonFont);
 		buttonComputer.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
 		buttonComputer.setLayoutData(griddataButtonComputer);
-
 		GridData griddataButtonPlayers=new GridData();
 		griddataButtonPlayers.horizontalAlignment=GridData.CENTER;
 		griddataButtonPlayers.heightHint=65;
@@ -84,8 +88,7 @@ public class Menu {
 		buttonPlayers.setText("Игрок против игрока");
 		buttonPlayers.setFont(buttonFont);
 		buttonPlayers.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
-		buttonPlayers.setLayoutData(griddataButtonPlayers);
-			
+		buttonPlayers.setLayoutData(griddataButtonPlayers);	
 		Listener listener = new Listener() {
 		      public void handleEvent(Event event) {
 		        if (event.widget == buttonRules){
