@@ -1,3 +1,8 @@
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
@@ -7,20 +12,43 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
 public class Winner {
 
-	Winner(Display display, Shell shell,int winner)
+	private Shell shell;
+	private Display display;
+	private int winner;
+	private int n;
+	Winner(Display display, Shell shell,int winner,int n)
+	{
+		this.shell=shell;
+		this.display=display;
+		this.winner=winner;
+		this.n=n;
+	}
+	public void Show()
 	{
 		System.out.println("WinText");
 		for (Control kid : shell.getChildren())
 		{
 			kid.dispose();
 		}
-		
-		Image backgroundImage = new Image(display, "C:/Users/Anastasia/workspace/BoolsAndCows/Images/number.jpg");
+		InputStream is=null;
+		try {
+			is = Files.newInputStream(Paths.get("Images/number.jpg"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Image backgroundImage = new Image(display, is); 
+		try {
+			is.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		Font buttonFont = new Font( shell.getDisplay(), new FontData( "Times New Roman", 14, SWT.NORMAL ) );
 		Font labelFont=new Font( shell.getDisplay(), new FontData( "Arial", 20, SWT.NORMAL ) );
 		
@@ -36,10 +64,27 @@ public class Winner {
 		griddataWinnerLabel.widthHint=350;
 		Label winnerLabel=new Label(shell,SWT.NONE);
 		winnerLabel.setFont(labelFont);
-		winnerLabel.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_WHITE));
-		if(winner==1) winnerLabel.setText("Игрок 1 выиграл!");
-		if(winner==2) winnerLabel.setText("Игрок 2 выиграл!");
-		if(winner==3) winnerLabel.setText("Ничья!");
+		winnerLabel.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_WHITE));	
+		if(n==1)
+		{
+			if(winner==1) winnerLabel.setText("Игрок 1 выиграл!");
+			if(winner==2) winnerLabel.setText("Игрок 2 выиграл!");
+			if(winner==3) winnerLabel.setText("Ничья!");
+		}
+		else if(n==2)
+		{
+			if(winner==1) winnerLabel.setText("Компьютер 1 выиграл!");
+			if(winner==2) winnerLabel.setText("Компьютер 2 выиграл!");
+			if(winner==3) winnerLabel.setText("Ничья!");
+		}
+		else if(n==3)
+		{
+			if(winner==1) winnerLabel.setText("Вы выиграли!");
+			if(winner==2) winnerLabel.setText("Компьютер выиграл!");
+			if(winner==3) winnerLabel.setText("Ничья!");
+		}
+		
+
 		winnerLabel.setAlignment(SWT.CENTER );
 		winnerLabel.setLayoutData(griddataWinnerLabel);
 		
@@ -51,14 +96,7 @@ public class Winner {
 		restartButton.setFont(buttonFont);
 		restartButton.setLayoutData(griddataRestartButton);
 		restartButton.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
-		restartButton.addSelectionListener(
-	            new org.eclipse.swt.events.SelectionAdapter() {
-	                public void widgetSelected(
-	                        org.eclipse.swt.events.SelectionEvent e) {
-	                	Computer computer=new Computer(display,shell);
-	                }
-	            });
-		
+
 		GridData griddataBackToMenuButton=new GridData();
 		griddataBackToMenuButton.heightHint=65;
 		griddataBackToMenuButton.widthHint=350;
@@ -67,14 +105,20 @@ public class Winner {
 		backToMenuButton.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
 		backToMenuButton.setFont(buttonFont);
 		backToMenuButton.setLayoutData(griddataBackToMenuButton);
-		backToMenuButton.addSelectionListener(
-	            new org.eclipse.swt.events.SelectionAdapter() {
-	                public void widgetSelected(
-	                        org.eclipse.swt.events.SelectionEvent e) {
-	                	Menu menu=new Menu(display,shell);
-	                }
-	            });
-	
+		Listener listener = new Listener() {
+		      public void handleEvent(Event event) {
+		        if (event.widget == restartButton){
+		        	Computer computer=new Computer(display,shell);
+		        	computer.Show();
+		        }
+		        else if(event.widget == backToMenuButton){
+		        	Menu menu=new Menu(display,shell);
+		        	menu.Show();
+		        }
+		      }
+		    };
+		    restartButton.addListener(SWT.Selection,listener);
+		    backToMenuButton.addListener(SWT.Selection,listener);
 		
 		shell.pack();
 		shell.setSize(800, 900);

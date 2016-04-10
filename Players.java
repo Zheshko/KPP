@@ -1,3 +1,8 @@
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
@@ -12,23 +17,49 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 public class Players {
-	Label enteredNumberLabel;
-	int digitsInLabel=0,cows,bulls;//кол-во введенных цифр, кол-во коров,кол-во быков
-	int playerTurn=1,win;//ход игрока(1-первый ходит,2-второй),флаг победы
-	String correctNumber1;//загаданное число игрока 1
-	String correctNumber2;//загаданное число игрока 2
-	Players(Display display, Shell shell,String string1,String string2)
+	private Label enteredNumberLabel;
+	private Label playerLabel1,playerLabel2;
+	private Text playerText1,playerText2;
+	private Font passivePlayerFont,activePlayerFont;
+	private int digitsInLabel=0,cows,bulls;//кол-во введенных цифр, кол-во коров,кол-во быков
+	private int playerTurn=1,win;//ход игрока(1-первый ходит,2-второй),флаг победы
+	private String correctNumber1;//загаданное число игрока 1
+	private String correctNumber2;//загаданное число игрока 2
+	private Shell shell;
+	private Display display;
+	
+	public Players(Display display, Shell shell,String string1,String string2)
 	{
 		for (Control kid : shell.getChildren())
 		{
 			kid.dispose();
 		}
+		this.shell=shell;
+		this.display=display;
 		correctNumber1=string1;
-		correctNumber2=string2;
+		correctNumber2=string2;	
+		playerLabel1 = new Label(shell, SWT.NONE);
+		playerLabel2 = new Label(shell, SWT.NONE);
+		playerText1=new Text(shell,SWT.READ_ONLY|SWT.CENTER|SWT.V_SCROLL);
+		playerText2=new Text(shell,SWT.READ_ONLY|SWT.CENTER|SWT.V_SCROLL);
+		passivePlayerFont = new Font( shell.getDisplay(), new FontData( "Arial", 16, SWT.NORMAL ) );
+		activePlayerFont=new Font( shell.getDisplay(), new FontData( "Arial", 20, SWT.NORMAL ) );
+	}
+
+	public void Show(){
+		InputStream is=null;
+		try {
+			is = Files.newInputStream(Paths.get("Images/players.jpg"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Image backgroundImage = new Image(display, is); 
+		try {
+			is.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
-		Image backgroundImage = new Image(display, "C:/Users/Anastasia/workspace/BoolsAndCows/Images/players.jpg");
-		Font passivePlayerFont = new Font( shell.getDisplay(), new FontData( "Arial", 16, SWT.NORMAL ) );
-		Font activePlayerFont=new Font( shell.getDisplay(), new FontData( "Arial", 20, SWT.NORMAL ) );
 		Font buttonFont = new Font( shell.getDisplay(), new FontData( "Arial", 12, SWT.NORMAL ) );
 		
 		GridLayout mainLayout=new GridLayout();
@@ -43,7 +74,7 @@ public class Players {
 		griddataPlayerLabel1.horizontalSpan=5;
 		griddataPlayerLabel1.widthHint=350;
 		griddataPlayerLabel1.heightHint=40;
-		Label playerLabel1 = new Label(shell, SWT.NONE);
+		
 		playerLabel1.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_WHITE));
 		playerLabel1.setForeground(shell.getDisplay().getSystemColor(SWT.COLOR_RED));
 		playerLabel1.setText("Игрок 1");
@@ -55,7 +86,6 @@ public class Players {
 		griddataPlayerLabel2.horizontalSpan=5;
 		griddataPlayerLabel2.widthHint=350;
 		griddataPlayerLabel2.heightHint=40;
-		Label playerLabel2 = new Label(shell, SWT.NONE);
 		playerLabel2.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_WHITE));
 		playerLabel2.setText("Игрок 2");
 		playerLabel2.setFont(passivePlayerFont);
@@ -65,8 +95,8 @@ public class Players {
 		GridData griddataPlayerText1=new GridData();
 		griddataPlayerText1.horizontalSpan=5;
 		griddataPlayerText1.heightHint=450;
-		griddataPlayerText1.widthHint=335;
-		Text playerText1=new Text(shell,SWT.READ_ONLY|SWT.CENTER);
+		griddataPlayerText1.widthHint=315;
+		
 		playerText1.setFont(passivePlayerFont);
 		playerText1.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_WHITE));
 		playerText1.setLayoutData(griddataPlayerText1);
@@ -74,12 +104,12 @@ public class Players {
 		GridData griddataPlayerText2=new GridData();
 		griddataPlayerText2.horizontalSpan=5;
 		griddataPlayerText2.heightHint=450;
-		griddataPlayerText2.widthHint=335;
-		Text playerText2=new Text(shell,SWT.READ_ONLY|SWT.CENTER);
+		griddataPlayerText2.widthHint=315;
+		
+		//Label playerLabel = new Label(player, SWT.NONE);
 		playerText2.setFont(passivePlayerFont);
 		playerText2.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_WHITE));
 		playerText2.setLayoutData(griddataPlayerText2);
-		
 		enteredNumberLabel=new Label(shell, SWT.NONE);
 		enteredNumberLabel.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_WHITE));
 		Font boldFont2 = new Font( enteredNumberLabel.getDisplay(), new FontData( "Arial", 36, SWT.NORMAL ) );
@@ -239,55 +269,14 @@ public class Players {
 	            new org.eclipse.swt.events.SelectionAdapter() {
 	                public void widgetSelected(
 	                        org.eclipse.swt.events.SelectionEvent e) {
-	                	if(digitsInLabel==4)//если кол-во введенных в enteredNumberLabel=4
-	                	{   //определение хода игрока
-	                		if(playerTurn==1)
-	                		{
-	                			compare(enteredNumberLabel.getText().toCharArray());//определение кол-ва быков и коров у 1ого игрока
-	                			playerLabel2.setFont(activePlayerFont);
-	                			playerLabel1.setFont(passivePlayerFont);
-	                			playerLabel2.setForeground(shell.getDisplay().getSystemColor(SWT.COLOR_RED));
-	                			playerLabel1.setForeground(shell.getDisplay().getSystemColor(SWT.COLOR_BLACK));
-	                			playerText1.append("\n"+enteredNumberLabel.getText()+" "+ bulls+"б. "+cows+"к.");
-	                			if(bulls==4) win++;//если угадал 4 цифры увеличивается win
-	                			enteredNumberLabel.setText("");
-	                			digitsInLabel=0;
-	                			cows=0;
-	                			bulls=0;
-	                			playerTurn=2;//передача хода 2ому игроку
-	                		}
-	                		else//для 2ого аналогично
-	                		{
-	                			compare(enteredNumberLabel.getText().toCharArray());
-	                			playerLabel1.setFont(activePlayerFont);
-	                			playerLabel2.setFont(passivePlayerFont);
-	                			playerLabel1.setForeground(shell.getDisplay().getSystemColor(SWT.COLOR_RED));
-	                			playerLabel2.setForeground(shell.getDisplay().getSystemColor(SWT.COLOR_BLACK));
-	                			playerText2.append("\n"+enteredNumberLabel.getText()+" "+ bulls+"б. "+cows+"к.");
-	                			if(bulls==4) win+=2;  
-	                			
-	                			if(win>0) //если хотя бы 1 из игроков угадал число
-	                				{
-	                					Winner winner=new Winner(display,shell,win);
-	                				}
-	                			
-	                			else{
-		                			enteredNumberLabel.setText("");
-		                			digitsInLabel=0;
-		                			cows=0;
-		                			bulls=0;
-		                			playerTurn=1;//передача хода 1ому игроку
-	                				}
-	                		}
-	                		
-	                		}
+	                	if(digitsInLabel==4) MakeTurn();//если кол-во введенных в enteredNumberLabel=4
+	                	  //определение хода игрока            		
 	                }
 	            });
 		
 		shell.pack();
 		shell.setSize(820, 920);
 	}
-
 	private void buttonPressed(Button btn){//обработка нажатой кнопки цифры
 		btn.addSelectionListener(
 	            new org.eclipse.swt.events.SelectionAdapter() {
@@ -308,8 +297,9 @@ public class Players {
 	}
 	private void compare(char[] compareString){//сравнение хода игрока с загаданным числом
 		char[] correctString = null;
+		System.out.println(correctNumber1+correctNumber2);
 		if(playerTurn==1) correctString=correctNumber2.toCharArray();
-		if(playerTurn==2) correctString=correctNumber1.toCharArray();
+		else if(playerTurn==2) correctString=correctNumber1.toCharArray();
 		for(int j=0;j<4;j++)
 		{
 			for(int k=0;k<4;k++)
@@ -319,5 +309,47 @@ public class Players {
 			}
 		}
 	}	
-		
+	private void MakeTurn()
+	{
+		compare(enteredNumberLabel.getText().toCharArray());
+		if(playerTurn==1)
+		{
+			//определение кол-ва быков и коров у 1ого игрока
+			playerLabel2.setFont(activePlayerFont);
+			playerLabel1.setFont(passivePlayerFont);
+			playerLabel2.setForeground(shell.getDisplay().getSystemColor(SWT.COLOR_RED));
+			playerLabel1.setForeground(shell.getDisplay().getSystemColor(SWT.COLOR_BLACK));
+			playerText1.append("\n"+enteredNumberLabel.getText()+" "+ bulls+"б. "+cows+"к.");
+			if(bulls==4) win++;//если угадал 4 цифры увеличивается win
+			enteredNumberLabel.setText("");
+			digitsInLabel=0;
+			cows=0;
+			bulls=0;
+			playerTurn=2;//передача хода 2ому игроку
+		}
+		else//для 2ого аналогично
+		{
+			//compare(enteredNumberLabel.getText().toCharArray());
+			playerLabel1.setFont(activePlayerFont);
+			playerLabel2.setFont(passivePlayerFont);
+			playerLabel1.setForeground(shell.getDisplay().getSystemColor(SWT.COLOR_RED));
+			playerLabel2.setForeground(shell.getDisplay().getSystemColor(SWT.COLOR_BLACK));
+			playerText2.append("\n"+enteredNumberLabel.getText()+" "+ bulls+"б. "+cows+"к.");
+			if(bulls==4) win+=2;  
+			
+			if(win>0) //если хотя бы 1 из игроков угадал число
+				{
+					Winner winner=new Winner(display,shell,win,1);
+					winner.Show();
+				}
+			
+			else{
+    			enteredNumberLabel.setText("");
+    			digitsInLabel=0;
+    			cows=0;
+    			bulls=0;
+    			playerTurn=1;//передача хода 1ому игроку
+				}
+		}
+	}
 }
