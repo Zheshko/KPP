@@ -1,0 +1,383 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_832c83ac",
+        "filename": "Computer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-10T19:07:13Z",
+      "side": 1,
+      "message": "Long line.",
+      "range": {
+        "startLine": 28,
+        "startChar": 50,
+        "endLine": 28,
+        "endChar": 102
+      },
+      "revId": "9e4353ce537d6cc3a0c33ee928ad1df6cac23e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_a32f87a0",
+        "filename": "Computer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-10T19:07:13Z",
+      "side": 1,
+      "message": "Can be replaced by switch",
+      "range": {
+        "startLine": 71,
+        "startChar": 10,
+        "endLine": 83,
+        "endChar": 44
+      },
+      "revId": "9e4353ce537d6cc3a0c33ee928ad1df6cac23e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_63185f85",
+        "filename": "Computer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-10T19:07:13Z",
+      "side": 1,
+      "message": "One tab is enough",
+      "range": {
+        "startLine": 90,
+        "startChar": 4,
+        "endLine": 90,
+        "endChar": 6
+      },
+      "revId": "9e4353ce537d6cc3a0c33ee928ad1df6cac23e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_9e1df868",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-10T19:07:13Z",
+      "side": 1,
+      "message": "50, max 100 lines methods. Not 320",
+      "revId": "9e4353ce537d6cc3a0c33ee928ad1df6cac23e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_431d5b72",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-10T19:07:13Z",
+      "side": 1,
+      "message": "Tab\u0027s",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 1
+      },
+      "revId": "9e4353ce537d6cc3a0c33ee928ad1df6cac23e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_03175352",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-10T19:07:13Z",
+      "side": 1,
+      "message": "so much tabs",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 13
+      },
+      "revId": "9e4353ce537d6cc3a0c33ee928ad1df6cac23e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_fe0d2438",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-10T19:07:13Z",
+      "side": 1,
+      "message": "It seems like this method is not a member of class",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 39
+      },
+      "revId": "9e4353ce537d6cc3a0c33ee928ad1df6cac23e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_de13805b",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-10T19:07:13Z",
+      "side": 1,
+      "message": "And this too",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 47
+      },
+      "revId": "9e4353ce537d6cc3a0c33ee928ad1df6cac23e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_1e09e82c",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-10T19:07:13Z",
+      "side": 1,
+      "message": "All code below have 2 tabs because of this commented do ... while cycle.",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 6
+      },
+      "revId": "9e4353ce537d6cc3a0c33ee928ad1df6cac23e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_c3096b33",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-10T19:07:13Z",
+      "side": 1,
+      "message": "Var names",
+      "range": {
+        "startLine": 458,
+        "startChar": 23,
+        "endLine": 458,
+        "endChar": 27
+      },
+      "revId": "9e4353ce537d6cc3a0c33ee928ad1df6cac23e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_5e4d3071",
+        "filename": "Menu.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-10T19:07:13Z",
+      "side": 1,
+      "message": "Don\u0027t print all errors to console. If file is not opened, just alert user about it and close app.\n\nExample\n\nAlert alert \u003d new Alert(AlertType.ERROR);\nalert.setTitle(\"Error Dialog\");\nalert.setHeaderText(\"Smth crashed...\"); alert.setContentText(message);",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 23
+      },
+      "revId": "9e4353ce537d6cc3a0c33ee928ad1df6cac23e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_1ea56803",
+        "filename": "Number.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-10T19:07:13Z",
+      "side": 1,
+      "message": "formating",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 46
+      },
+      "revId": "9e4353ce537d6cc3a0c33ee928ad1df6cac23e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_7e5fd40e",
+        "filename": "Players.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-10T19:07:13Z",
+      "side": 1,
+      "message": "Variable names.",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 40
+      },
+      "revId": "9e4353ce537d6cc3a0c33ee928ad1df6cac23e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_5e9bf0c9",
+        "filename": "Players.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-10T19:07:13Z",
+      "side": 1,
+      "message": "Maximum line columns 80-100 (c) Google Java Code style",
+      "revId": "9e4353ce537d6cc3a0c33ee928ad1df6cac23e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_1e57a803",
+        "filename": "Rules.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-10T19:07:13Z",
+      "side": 1,
+      "message": "Can be replaced by try witj resources. It will automatically close if smthg went wrong.",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 3
+      },
+      "revId": "9e4353ce537d6cc3a0c33ee928ad1df6cac23e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_3e526c14",
+        "filename": "Rules.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-10T19:07:13Z",
+      "side": 1,
+      "message": "It\u0027s really all in one line?",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "9e4353ce537d6cc3a0c33ee928ad1df6cac23e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_7e48f45b",
+        "filename": "Winner.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-10T19:07:13Z",
+      "side": 1,
+      "message": "Next line",
+      "range": {
+        "startLine": 52,
+        "startChar": 50,
+        "endLine": 52,
+        "endChar": 102
+      },
+      "revId": "9e4353ce537d6cc3a0c33ee928ad1df6cac23e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
