@@ -81,13 +81,13 @@ public class Winner {
 			if(winner==2) winnerLabel.setText("Игрок 2 выиграл!");
 			if(winner==3) winnerLabel.setText("Ничья!");
 		}
-		else if(mode==2)
+		else if(mode==5)
 		{
 			if(winner==1) winnerLabel.setText("Компьютер 1 выиграл!");
 			if(winner==2) winnerLabel.setText("Компьютер 2 выиграл!");
 			if(winner==3) winnerLabel.setText("Ничья!");
 		}
-		else if(mode==3)
+		else
 		{
 			if(winner==1) winnerLabel.setText("Вы выиграли!");
 			if(winner==2) winnerLabel.setText("Компьютер выиграл!");
@@ -114,9 +114,17 @@ public class Winner {
 		Listener listener = new Listener() {
 		      public void handleEvent(Event event) {
 		        if (event.widget == restartButton){
-		        	Computer computer=new Computer(display,shell);
-		        	computer.Show();
-		        }
+		        	if(mode==1)
+		        	{
+		        		Number number=new Number(display,shell,0);
+			        	number.Show();
+		        	}
+		        	else 
+		        	{
+		        		Computer computer=new Computer(display,shell);
+		        		computer.Show();
+		        	}
+		        }	
 		        else if(event.widget == backToMenuButton){
 		        	Menu menu=new Menu(display,shell);
 		        	menu.Show();

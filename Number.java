@@ -299,7 +299,9 @@ public class Number {
 	                }
 	            });
 	}
-	/**Метод, генерирующий загаданное компьютером число*/
+	/**Метод, генерирующий загаданное компьютером число
+	 * @return возвращает число бота в виде строки
+	 * */
 	public static String CreateBotNumber(){
 		String botNumber="";
 		CharSequence digit="";

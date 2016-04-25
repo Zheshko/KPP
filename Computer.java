@@ -100,7 +100,7 @@ public class Computer {
 								display.timerExec(500, this);
 							else 
 							{
-								Winner winner = new Winner(display, shell, win,2);
+								Winner winner = new Winner(display, shell, win,5);
 								winner.Show();
 							}
 						}
