@@ -1,0 +1,198 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_eab406f3",
+        "filename": "Computer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T06:04:59Z",
+      "side": 1,
+      "message": "It can ne separated?",
+      "revId": "41ceb367f24b3fd39332f2355d5c38d8ee99c46b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_cab702f4",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T06:04:59Z",
+      "side": 1,
+      "message": "names",
+      "range": {
+        "startLine": 34,
+        "startChar": 33,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "41ceb367f24b3fd39332f2355d5c38d8ee99c46b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_aacf1e7e",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T06:04:59Z",
+      "side": 1,
+      "message": "bricks",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 5
+      },
+      "revId": "41ceb367f24b3fd39332f2355d5c38d8ee99c46b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_6ac91678",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T06:04:59Z",
+      "side": 1,
+      "message": "Rework",
+      "revId": "41ceb367f24b3fd39332f2355d5c38d8ee99c46b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_4ac4125e",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T06:04:59Z",
+      "side": 1,
+      "message": "Level difficukt can be a constant.",
+      "range": {
+        "startLine": 367,
+        "startChar": 21,
+        "endLine": 367,
+        "endChar": 22
+      },
+      "revId": "41ceb367f24b3fd39332f2355d5c38d8ee99c46b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_2aa2eeae",
+        "filename": "FileClass.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T06:04:59Z",
+      "side": 1,
+      "message": "javadoc",
+      "revId": "41ceb367f24b3fd39332f2355d5c38d8ee99c46b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_0aa5eab3",
+        "filename": "GameWindow.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T06:04:59Z",
+      "side": 1,
+      "message": "Separate",
+      "revId": "41ceb367f24b3fd39332f2355d5c38d8ee99c46b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_caaee297",
+        "filename": "Logic.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T06:04:59Z",
+      "side": 1,
+      "message": "javadoc",
+      "revId": "41ceb367f24b3fd39332f2355d5c38d8ee99c46b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_aa96fe49",
+        "filename": "Menu.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T06:04:59Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "41ceb367f24b3fd39332f2355d5c38d8ee99c46b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_8a91fa54",
+        "filename": "Replay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T06:04:59Z",
+      "side": 1,
+      "message": "?",
+      "revId": "41ceb367f24b3fd39332f2355d5c38d8ee99c46b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
