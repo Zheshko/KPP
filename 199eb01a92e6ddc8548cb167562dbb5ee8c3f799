@@ -1,0 +1,313 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_8ac0da7d",
+        "filename": "Computer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T05:25:39Z",
+      "side": 1,
+      "message": "Hardly recommended use google code style.",
+      "revId": "199eb01a92e6ddc8548cb167562dbb5ee8c3f799",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_6abfd6fb",
+        "filename": "Computer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T05:25:39Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 37,
+        "startChar": 49,
+        "endLine": 37,
+        "endChar": 50
+      },
+      "revId": "199eb01a92e6ddc8548cb167562dbb5ee8c3f799",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_4abad20b",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T05:25:39Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 26,
+        "startChar": 72,
+        "endLine": 26,
+        "endChar": 73
+      },
+      "revId": "199eb01a92e6ddc8548cb167562dbb5ee8c3f799",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_0a3baa9d",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T05:25:39Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 3
+      },
+      "revId": "199eb01a92e6ddc8548cb167562dbb5ee8c3f799",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_ea41a60c",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T05:25:39Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 140,
+        "startChar": 52,
+        "endLine": 140,
+        "endChar": 53
+      },
+      "revId": "199eb01a92e6ddc8548cb167562dbb5ee8c3f799",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_ca44a21c",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T05:25:39Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 175,
+        "startChar": 52,
+        "endLine": 175,
+        "endChar": 53
+      },
+      "revId": "199eb01a92e6ddc8548cb167562dbb5ee8c3f799",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_aa4cbe42",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T05:25:39Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 200,
+        "startChar": 13,
+        "endLine": 200,
+        "endChar": 15
+      },
+      "revId": "199eb01a92e6ddc8548cb167562dbb5ee8c3f799",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_2a5f8ee6",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T05:25:39Z",
+      "side": 1,
+      "message": "Use google code style + remove trailing spaces",
+      "range": {
+        "startLine": 366,
+        "startChar": 11,
+        "endLine": 375,
+        "endChar": 9
+      },
+      "revId": "199eb01a92e6ddc8548cb167562dbb5ee8c3f799",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_0a628aad",
+        "filename": "FileClass.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T05:25:39Z",
+      "side": 1,
+      "message": "It seems better to use NIO library.",
+      "revId": "199eb01a92e6ddc8548cb167562dbb5ee8c3f799",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_aa739e7f",
+        "filename": "GameWindow.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T05:25:39Z",
+      "side": 1,
+      "message": "it can be an array of buttons?",
+      "revId": "199eb01a92e6ddc8548cb167562dbb5ee8c3f799",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_8a6e9a94",
+        "filename": "GameWindow.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T05:25:39Z",
+      "side": 1,
+      "message": "Separate this function.",
+      "revId": "199eb01a92e6ddc8548cb167562dbb5ee8c3f799",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_6a6d9697",
+        "filename": "Logic.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T05:25:39Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 1
+      },
+      "revId": "199eb01a92e6ddc8548cb167562dbb5ee8c3f799",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_4a689287",
+        "filename": "Menu.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T05:25:39Z",
+      "side": 1,
+      "message": "Separate, if it possible.",
+      "revId": "199eb01a92e6ddc8548cb167562dbb5ee8c3f799",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_ea0f66df",
+        "filename": "Number.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T05:25:39Z",
+      "side": 1,
+      "message": "Same drafts as in previous files.",
+      "revId": "199eb01a92e6ddc8548cb167562dbb5ee8c3f799",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_ca126209",
+        "filename": "Players.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-04-25T05:25:39Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 101,
+        "startChar": 26,
+        "endLine": 103,
+        "endChar": 8
+      },
+      "revId": "199eb01a92e6ddc8548cb167562dbb5ee8c3f799",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
