@@ -62,7 +62,6 @@ public class Players extends GameWindow {
     cows = logic.getCows();
     bulls = logic.getBulls();
     if (playerTurn == 1) {
-      // определение кол-ва быков и коров у 1ого игрока
       playerLabel2.setFont(activePlayerFont);
       playerLabel1.setFont(passivePlayerFont);
       playerLabel2.setForeground(shell.getDisplay().getSystemColor(SWT.COLOR_RED));
@@ -81,7 +80,6 @@ public class Players extends GameWindow {
       playerTurn = 2;// передача хода 2ому игроку
     } else// для 2ого аналогично
     {
-      // compare(enteredNumberLabel.getText().toCharArray());
       playerLabel1.setFont(activePlayerFont);
       playerLabel2.setFont(passivePlayerFont);
       playerLabel1.setForeground(shell.getDisplay().getSystemColor(SWT.COLOR_RED));
@@ -99,13 +97,11 @@ public class Players extends GameWindow {
       if (win > 0) // если хотя бы 1 из игроков угадал число
       {
         Runnable winTimer = new Runnable() {
-
           @Override
           public void run() {
             Winner winner = new Winner(display, shell, win, 1);
             winner.Show();
           }
-
         };
         display.timerExec(1000, winTimer);
       }

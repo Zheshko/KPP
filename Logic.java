@@ -8,16 +8,12 @@ public class Logic implements Runnable {
 
   public Logic(char[] compareString, int playerTurn, String correctNumber1, String correctNumber2) {
     this.compareString = compareString;
-    System.out.println("compare string = " + compareString.toString());
     this.playerTurn = playerTurn;
     this.correctNumber1 = correctNumber1;
-    System.out.println("correctnumber1 string = " + correctNumber1);
     this.correctNumber2 = correctNumber2;
-    System.out.println("correctnumber2 string = " + correctNumber2);
   }
 
   private void compare() {// сравнение хода игрока с загаданным числом
-    System.out.println("Start compare");
     bulls = 0;
     cows = 0;
     char[] correctString = null;
@@ -35,17 +31,13 @@ public class Logic implements Runnable {
                  // месте-коровы
       }
     }
-    System.out.println("bulls compare - " + bulls);
-    System.out.println("cows compare - " + cows);
   }
 
   public int getBulls() {
-    System.out.println("bulls - " + bulls);
     return bulls;
   }
 
   public int getCows() {
-    System.out.println("cows - " + cows);
     return cows;
   }
 

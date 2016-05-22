@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Random;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -26,12 +27,12 @@ public class ComputerPlay extends GameWindow {
    * Массив всех возможных чисел с неповторяющимися числами игрока(или компьютера 1, в зависимости
    * от режима)
    */
-  private String massiveOfNumbers1[];
+  private static String massiveOfNumbers1[];
   /**
    * Массив всех возможных чисел с неповторяющимися числами компьютера(или компьютера 2, в
    * зависимости от режима)
    */
-  private String massiveOfNumbers2[];
+  private static String massiveOfNumbers2[];
   /** Загаданное число игрока(или компьютера 1, в зависимости от режима) */
   private String correctPlayerNumber;
   /**
@@ -223,14 +224,6 @@ public class ComputerPlay extends GameWindow {
       if (win == 0) {
         cows = 0;
         bulls = 0;
-      } else if (win > 0) {
-        try {
-          Thread.sleep(1000);// задержка экрана на 3 секунды(просто
-                             // чтобы не одновременно они записывали
-                             // рез-тат)
-        } catch (InterruptedException e1) {
-          e1.printStackTrace();
-        }
       }
       return win;
     }
@@ -267,12 +260,9 @@ public class ComputerPlay extends GameWindow {
   private String BotNumber(String[] mas) {
     Random random = new Random();
     int chosen;
-    System.out.println("In random func");
     while (true) {
       chosen = random.nextInt(5040);
-      System.out.println(mas[chosen]);
       if (mas[chosen] != "0") {
-        System.out.println("BotNubmer func");
         return mas[chosen];
       }
     }
@@ -343,20 +333,7 @@ public class ComputerPlay extends GameWindow {
     bulls = logic.getBulls();
     if (mode == 2)// если уровень легкий
       for (int j = 0; j < 5040; j++) {
-        if (massiveOfNumbers1[j] != "0" && !easyBot(massiveOfNumbers1[j]))// если
-                                                                          // на
-                                                                          // месте
-                                                                          // числа
-                                                                          // не
-                                                                          // стоит
-                                                                          // 0
-                                                                          // и
-                                                                          // функция
-                                                                          // вернула
-                                                                          // false(т.е.
-                                                                          // число
-                                                                          // не
-                                                                          // подходит)
+        if (massiveOfNumbers1[j] != "0" && !easyBot(massiveOfNumbers1[j]))
           massiveOfNumbers1[j] = "0";// на место ставится 0
       }
     else if (mode == 3)// если уровень средний(аналогично легкому)
@@ -389,7 +366,6 @@ public class ComputerPlay extends GameWindow {
     display.timerExec(1000, timer);
     if (win > 0) {
       Runnable winTimer = new Runnable() {
-
         @Override
         public void run() {
           Winner winner = new Winner(display, shell, win, mode);

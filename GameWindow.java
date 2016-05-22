@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
@@ -15,6 +16,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 public abstract class GameWindow {
+  protected Font buttonFont;
   protected Label enteredNumberLabel;
   /** Метка текста для первого игрока */
   protected Label playerLabel1;
@@ -40,15 +42,16 @@ public abstract class GameWindow {
   public void loadScreen(Display display, Shell shell) {
     this.display = display;
     this.shell = shell;
-  }
-
-  public void Show() {
     playerLabel1 = new Label(shell, SWT.NONE);
     playerLabel2 = new Label(shell, SWT.NONE);
     playerText1 = new Text(shell, SWT.READ_ONLY | SWT.CENTER | SWT.V_SCROLL);
     playerText2 = new Text(shell, SWT.READ_ONLY | SWT.CENTER | SWT.V_SCROLL);
     passivePlayerFont = new Font(shell.getDisplay(), new FontData("Arial", 16, SWT.NORMAL));
     activePlayerFont = new Font(shell.getDisplay(), new FontData("Arial", 20, SWT.NORMAL));
+    buttonFont = new Font(shell.getDisplay(), new FontData("Arial", 12, SWT.NORMAL));
+  }
+
+  public void Show() {
     InputStream is = null;
     try {
       is = Files.newInputStream(Paths.get("Images/players.jpg"));
@@ -61,13 +64,95 @@ public abstract class GameWindow {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    Font buttonFont = new Font(shell.getDisplay(), new FontData("Arial", 12, SWT.NORMAL));
     GridLayout mainLayout = new GridLayout();
     mainLayout.numColumns = 10;
     shell.setLayout(mainLayout);
     shell.setBackgroundImage(backgroundImage);
     mainLayout.marginLeft = 35;
     mainLayout.marginTop = 20;
+    textShow();
+    buttonsShow();
+    GridData griddataButton6 = new GridData();
+    griddataButton6.horizontalAlignment = GridData.FILL;
+    griddataButton6.heightHint = 60;
+    griddataButton6.widthHint = 67;
+    button6 = new Button(shell, SWT.PUSH);
+    button6.setText("6");
+    button6.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
+    button6.setFont(buttonFont);
+    button6.setLayoutData(griddataButton6);
+    buttonPressed(button6);
+    GridData griddataButton7 = new GridData();
+    griddataButton7.horizontalAlignment = GridData.FILL;
+    griddataButton7.heightHint = 60;
+    griddataButton7.widthHint = 67;
+    button7 = new Button(shell, SWT.PUSH);
+    button7.setText("7");
+    button7.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
+    button7.setFont(buttonFont);
+    button7.setLayoutData(griddataButton7);
+    buttonPressed(button7);
+    GridData griddataButton8 = new GridData();
+    griddataButton8.horizontalAlignment = GridData.FILL;
+    griddataButton8.heightHint = 60;
+    griddataButton8.widthHint = 67;
+    button8 = new Button(shell, SWT.PUSH);
+    button8.setText("8");
+    button8.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
+    button8.setFont(buttonFont);
+    button8.setLayoutData(griddataButton8);
+    buttonPressed(button8);
+    GridData griddataButton9 = new GridData();
+    griddataButton9.horizontalAlignment = GridData.FILL;
+    griddataButton9.heightHint = 60;
+    griddataButton9.widthHint = 67;
+    button9 = new Button(shell, SWT.PUSH);
+    button9.setText("9");
+    button9.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
+    button9.setFont(buttonFont);
+    button9.setLayoutData(griddataButton9);
+    buttonPressed(button9);
+    GridData griddataButtonTurn = new GridData();
+    griddataButtonTurn.verticalIndent = 40;
+    griddataButtonTurn.heightHint = 60;
+    griddataButtonTurn.widthHint = 285;
+    griddataButtonTurn.horizontalSpan = 10;
+    griddataButtonTurn.horizontalAlignment = GridData.CENTER;
+    buttonTurn = new Button(shell, SWT.PUSH);
+    buttonTurn.setText("Сделать ход");
+    buttonTurn.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
+    buttonTurn.setFont(buttonFont);
+    buttonTurn.setLayoutData(griddataButtonTurn);
+    buttonTurn.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
+      public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
+        if (digitsInLabel == 4)
+          MakeTurn();// если кол-во введенных в enteredNumberLabel=4
+      }
+    });
+    shell.pack();
+    shell.setSize(820, 920);
+    extraSettings();
+  }
+
+  private void buttonPressed(Button btn) {// обработка нажатой кнопки цифры
+    btn.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
+      public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
+        char[] number = enteredNumberLabel.getText().toCharArray();
+        for (int i = 0; i < digitsInLabel; i++) {
+          if (btn.getText().toCharArray()[0] == number[i])
+            return;// выход если такая цифра уже есть в
+                   // enteredNumberLabel
+        }
+        if (digitsInLabel < 4) {
+          enteredNumberLabel.setText(enteredNumberLabel.getText() + btn.getText());
+          digitsInLabel++;// увеличивается кол-во цифр, находящихся в
+                          // enteredNumberLabel
+        }
+      }
+    });
+  }
+
+  private void textShow() {
     GridData griddataPlayerLabel1 = new GridData();
     griddataPlayerLabel1.horizontalSpan = 5;
     griddataPlayerLabel1.widthHint = 350;
@@ -111,6 +196,9 @@ public abstract class GameWindow {
     griddataEnteredNumberLabel.widthHint = 640;
     griddataEnteredNumberLabel.horizontalSpan = 9;
     enteredNumberLabel.setLayoutData(griddataEnteredNumberLabel);
+  }
+
+  private void buttonsShow() {
     GridData griddataButtonDelete = new GridData();
     griddataButtonDelete.horizontalAlignment = GridData.FILL;
     griddataButtonDelete.heightHint = 60;
@@ -121,17 +209,15 @@ public abstract class GameWindow {
     buttonDelete.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
     buttonDelete.setLayoutData(griddataButtonDelete);
     buttonDelete.setFont(buttonFont);
-    buttonDelete.addSelectionListener( // удаление последней цифры из
-                                       // enteredNumberLabel
-        new org.eclipse.swt.events.SelectionAdapter() {
-          public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
-            if (digitsInLabel > 0) {
-              enteredNumberLabel.setText(enteredNumberLabel.getText().substring(0,
-                  enteredNumberLabel.getText().length() - 1));
-              digitsInLabel--;
-            }
-          }
-        });
+    buttonDelete.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
+      public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
+        if (digitsInLabel > 0) {
+          enteredNumberLabel.setText(
+              enteredNumberLabel.getText().substring(0, enteredNumberLabel.getText().length() - 1));
+          digitsInLabel--;
+        }
+      }
+    });
     GridData griddataButton0 = new GridData();
     griddataButton0.horizontalAlignment = GridData.FILL;
     griddataButton0.heightHint = 60;
@@ -192,86 +278,6 @@ public abstract class GameWindow {
     button5.setFont(buttonFont);
     button5.setLayoutData(griddataButton5);
     buttonPressed(button5);
-    GridData griddataButton6 = new GridData();
-    griddataButton6.horizontalAlignment = GridData.FILL;
-    griddataButton6.heightHint = 60;
-    griddataButton6.widthHint = 67;
-    button6 = new Button(shell, SWT.PUSH);
-    button6.setText("6");
-    button6.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
-    button6.setFont(buttonFont);
-    button6.setLayoutData(griddataButton6);
-    buttonPressed(button6);
-    GridData griddataButton7 = new GridData();
-    griddataButton7.horizontalAlignment = GridData.FILL;
-    griddataButton7.heightHint = 60;
-    griddataButton7.widthHint = 67;
-    button7 = new Button(shell, SWT.PUSH);
-    button7.setText("7");
-    button7.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
-    button7.setFont(buttonFont);
-    button7.setLayoutData(griddataButton7);
-    buttonPressed(button7);
-    GridData griddataButton8 = new GridData();
-    griddataButton8.horizontalAlignment = GridData.FILL;
-    griddataButton8.heightHint = 60;
-    griddataButton8.widthHint = 67;
-    button8 = new Button(shell, SWT.PUSH);
-    button8.setText("8");
-    button8.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
-    button8.setFont(buttonFont);
-    button8.setLayoutData(griddataButton8);
-    buttonPressed(button8);
-    GridData griddataButton9 = new GridData();
-    griddataButton9.horizontalAlignment = GridData.FILL;
-    griddataButton9.heightHint = 60;
-    griddataButton9.widthHint = 67;
-    button9 = new Button(shell, SWT.PUSH);
-    button9.setText("9");
-    button9.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
-    button9.setFont(buttonFont);
-    button9.setLayoutData(griddataButton9);
-    buttonPressed(button9);
-    GridData griddataButtonTurn = new GridData();
-    griddataButtonTurn.verticalIndent = 40;
-    griddataButtonTurn.heightHint = 60;
-    griddataButtonTurn.widthHint = 285;
-    griddataButtonTurn.horizontalSpan = 10;
-    griddataButtonTurn.horizontalAlignment = GridData.CENTER;
-    buttonTurn = new Button(shell, SWT.PUSH);
-    buttonTurn.setText("Сделать ход");
-    buttonTurn.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
-    buttonTurn.setFont(buttonFont);
-    buttonTurn.setLayoutData(griddataButtonTurn);
-    buttonTurn.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
-      public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
-        if (digitsInLabel == 4)
-          MakeTurn();// если кол-во введенных в enteredNumberLabel=4
-        // определение хода игрока
-      }
-    });
-
-    shell.pack();
-    shell.setSize(820, 920);
-    extraSettings();
-  }
-
-  private void buttonPressed(Button btn) {// обработка нажатой кнопки цифры
-    btn.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
-      public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
-        char[] number = enteredNumberLabel.getText().toCharArray();
-        for (int i = 0; i < digitsInLabel; i++) {
-          if (btn.getText().toCharArray()[0] == number[i])
-            return;// выход если такая цифра уже есть в
-                   // enteredNumberLabel
-        }
-        if (digitsInLabel < 4) {
-          enteredNumberLabel.setText(enteredNumberLabel.getText() + btn.getText());
-          digitsInLabel++;// увеличивается кол-во цифр, находящихся в
-                          // enteredNumberLabel
-        }
-      }
-    });
   }
 
   protected abstract void extraSettings();

@@ -2,6 +2,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -10,6 +11,12 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
 public class Computer {
+  private Button easyButton;
+  private Button mediumButton;
+  private Button hardButton;
+  private Button autoButton;
+  private Button testButton;
+  private int count;
   /** Оболочка, в которой происходит отображение программы */
   private Shell shell;
   /** Дисплей, который использует оболочка */
@@ -32,6 +39,7 @@ public class Computer {
   public Computer(Display display, Shell shell) {
     this.shell = shell;
     this.display = display;
+    count = 0;
   }
 
   /** Метод, отображающий окно и устанавливающий обработку нажатия кнопок */
@@ -40,11 +48,16 @@ public class Computer {
       kid.dispose();
     }
     Font buttonFont = new Font(shell.getDisplay(), new FontData("Times New Roman", 14, SWT.NORMAL));
+    GridLayout mainlayout = new GridLayout();
+    mainlayout.numColumns = 1;
+    shell.setLayout(mainlayout);
+    mainlayout.marginLeft = 220;
+    mainlayout.marginTop = 270;
     GridData griddataButtonEasy = new GridData();
     griddataButtonEasy.horizontalAlignment = GridData.CENTER;
     griddataButtonEasy.heightHint = 65;
     griddataButtonEasy.widthHint = 350;
-    Button easyButton = new Button(shell, SWT.PUSH);
+    easyButton = new Button(shell, SWT.PUSH);
     easyButton.setFont(buttonFont);
     easyButton.setText("Легкий");
     easyButton.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
@@ -53,7 +66,7 @@ public class Computer {
     griddataButtonMedium.horizontalAlignment = GridData.CENTER;
     griddataButtonMedium.heightHint = 65;
     griddataButtonMedium.widthHint = 350;
-    Button mediumButton = new Button(shell, SWT.PUSH);
+    mediumButton = new Button(shell, SWT.PUSH);
     mediumButton.setText("Средний");
     mediumButton.setFont(buttonFont);
     mediumButton.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
@@ -62,7 +75,7 @@ public class Computer {
     griddataButtonHard.horizontalAlignment = GridData.CENTER;
     griddataButtonHard.heightHint = 65;
     griddataButtonHard.widthHint = 350;
-    Button hardButton = new Button(shell, SWT.PUSH);
+    hardButton = new Button(shell, SWT.PUSH);
     hardButton.setText("Тяжелый");
     hardButton.setFont(buttonFont);
     hardButton.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
@@ -71,11 +84,26 @@ public class Computer {
     griddataButtonAuto.horizontalAlignment = GridData.CENTER;
     griddataButtonAuto.heightHint = 65;
     griddataButtonAuto.widthHint = 350;
-    Button autoButton = new Button(shell, SWT.PUSH);
+    autoButton = new Button(shell, SWT.PUSH);
     autoButton.setText("Автоматичексий");
     autoButton.setFont(buttonFont);
     autoButton.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
     autoButton.setLayoutData(griddataButtonAuto);
+    GridData griddataTest = new GridData();
+    griddataTest.horizontalAlignment = GridData.CENTER;
+    griddataTest.heightHint = 65;
+    griddataTest.widthHint = 350;
+    testButton = new Button(shell, SWT.PUSH);
+    testButton.setText("Тестировка");
+    testButton.setFont(buttonFont);
+    testButton.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
+    testButton.setLayoutData(griddataTest);
+    setListeners();
+    shell.pack();
+    shell.setSize(820, 920);
+  }
+
+  private void setListeners() {
     Listener listener = new Listener() {
       public void handleEvent(Event event) {
         if (event.widget == easyButton) {
@@ -105,6 +133,8 @@ public class Computer {
             }
           };
           display.timerExec(500, timer);
+        } else if (event.widget == testButton) {
+          restartTest();
         }
       }
     };
@@ -112,7 +142,31 @@ public class Computer {
     mediumButton.addListener(SWT.Selection, listener);
     hardButton.addListener(SWT.Selection, listener);
     autoButton.addListener(SWT.Selection, listener);
-    shell.pack();
-    shell.setSize(820, 920);
+    testButton.addListener(SWT.Selection, listener);
+  }
+
+  private void restartTest() {
+    if (count < 1000) {
+      string1 = Number.CreateBotNumber();
+      string2 = Number.CreateBotNumber();
+      ComputerPlay computerPlay = new ComputerPlay(display, shell, string1, string2, 5);
+      computerPlay.Show();
+      Runnable timer = new Runnable() {
+        @Override
+        public void run() {
+          int win = computerPlay.autoBot();
+          if (win == 0)
+            display.timerExec(1, this);
+          else {
+            FileClass file = new FileClass("src/Temp.txt");
+            file.saveGame();
+            file.closeDOS();
+            count++;
+            restartTest();
+          }
+        }
+      };
+      display.timerExec(1, timer);
+    }
   }
 }

@@ -5,7 +5,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
 public class Replay extends GameWindow {
-  private FileClass file = new FileClass("src/Temp.txt");
+  private FileClass file;
   private int turn = 1;
   private int bulls, cows;
   private int winner = 0;
@@ -16,21 +16,21 @@ public class Replay extends GameWindow {
   private int mode;
 
   /** Метка для ввода игроком числа */
-  public Replay(int mode, Display display, Shell shell) {
+  public Replay(Display display, Shell shell, String replayName) {
     for (Control kid : shell.getChildren()) {
       kid.dispose();
     }
     super.loadScreen(display, shell);
-    this.mode = mode;
-  }
-
-  private void startReplay() {
+    file = new FileClass(replayName);
     try {
       file.openToRead();
       mode = file.readInt();
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
+  }
+
+  private void startReplay() {
     Runnable timer = new Runnable() {
 
       @Override
@@ -42,6 +42,7 @@ public class Replay extends GameWindow {
         else {
           Winner win = new Winner(display, shell, winner, mode);
           win.Show();
+          win.disableSaveButton();
         }
       }
     };

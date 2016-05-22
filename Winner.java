@@ -26,6 +26,10 @@ public class Winner {
   private int winner;
   /** Режим игры */
   private int mode;
+  private FileClass file = new FileClass("src/Temp.txt");
+  private Button backToMenuButton;
+  private Button saveButton;
+  private Button restartButton;
 
   /**
    * Конструктор, инициализирующий переменные
@@ -36,6 +40,9 @@ public class Winner {
    * @param n- режим игры
    */
   Winner(Display display, Shell shell, int winner, int n) {
+    for (Control kid : shell.getChildren()) {
+      kid.dispose();
+    }
     this.shell = shell;
     this.display = display;
     this.winner = winner;
@@ -45,9 +52,6 @@ public class Winner {
   /** Метод, отображающий окно и устанавливающий обработку нажатия кнопок */
   public void Show() {
     System.out.println("WinText");
-    for (Control kid : shell.getChildren()) {
-      kid.dispose();
-    }
     InputStream is = null;
     try {
       is = Files.newInputStream(Paths.get("Images/number.jpg"));
@@ -62,14 +66,12 @@ public class Winner {
     }
     Font buttonFont = new Font(shell.getDisplay(), new FontData("Times New Roman", 14, SWT.NORMAL));
     Font labelFont = new Font(shell.getDisplay(), new FontData("Arial", 20, SWT.NORMAL));
-
     GridLayout mainLayout = new GridLayout();
     mainLayout.numColumns = 1;
     shell.setLayout(mainLayout);
     shell.setBackgroundImage(backgroundImage);
     mainLayout.marginLeft = 200;
     mainLayout.marginTop = 300;
-
     GridData griddataWinnerLabel = new GridData();
     griddataWinnerLabel.heightHint = 65;
     griddataWinnerLabel.widthHint = 350;
@@ -103,7 +105,7 @@ public class Winner {
     GridData griddataRestartButton = new GridData();
     griddataRestartButton.heightHint = 65;
     griddataRestartButton.widthHint = 350;
-    Button restartButton = new Button(shell, SWT.PUSH);
+    restartButton = new Button(shell, SWT.PUSH);
     restartButton.setText("Рестарт");
     restartButton.setFont(buttonFont);
     restartButton.setLayoutData(griddataRestartButton);
@@ -111,11 +113,25 @@ public class Winner {
     GridData griddataBackToMenuButton = new GridData();
     griddataBackToMenuButton.heightHint = 65;
     griddataBackToMenuButton.widthHint = 350;
-    Button backToMenuButton = new Button(shell, SWT.PUSH);
+    backToMenuButton = new Button(shell, SWT.PUSH);
     backToMenuButton.setText("В главное меню");
     backToMenuButton.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
     backToMenuButton.setFont(buttonFont);
     backToMenuButton.setLayoutData(griddataBackToMenuButton);
+    GridData griddataSaveButton = new GridData();
+    griddataSaveButton.heightHint = 65;
+    griddataSaveButton.widthHint = 350;
+    saveButton = new Button(shell, SWT.PUSH);
+    saveButton.setText("Сохранить игру");
+    saveButton.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
+    saveButton.setFont(buttonFont);
+    saveButton.setLayoutData(griddataSaveButton);
+    setListeners();
+    shell.pack();
+    shell.setSize(800, 900);
+  }
+
+  private void setListeners() {
     Listener listener = new Listener() {
       public void handleEvent(Event event) {
         if (event.widget == restartButton) {
@@ -129,12 +145,20 @@ public class Winner {
         } else if (event.widget == backToMenuButton) {
           Menu menu = new Menu(display, shell);
           menu.Show();
+        } else if (event.widget == saveButton) {
+          file.saveGame();
+          saveButton.setEnabled(false);
+          file.closeDOS();
         }
       }
     };
     restartButton.addListener(SWT.Selection, listener);
     backToMenuButton.addListener(SWT.Selection, listener);
-    shell.pack();
-    shell.setSize(800, 900);
+    saveButton.addListener(SWT.Selection, listener);
+  }
+
+  public void disableSaveButton() {
+    saveButton.setEnabled(false);
+    restartButton.setEnabled(false);
   }
 }

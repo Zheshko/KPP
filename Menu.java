@@ -24,6 +24,10 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
 public class Menu {
+  private Button buttonRules;
+  private Button buttonReplay;
+  private Button buttonComputer;
+  private Button buttonPlayers;
   private FileClass file = new FileClass("src/Temp.txt");
   /** Оболочка, в которой происходит отображение программы */
   private Shell shell;
@@ -71,7 +75,7 @@ public class Menu {
     griddataButtonRules.horizontalAlignment = GridData.CENTER;
     griddataButtonRules.heightHint = 65;
     griddataButtonRules.widthHint = 350;
-    Button buttonRules = new Button(shell, SWT.PUSH);
+    buttonRules = new Button(shell, SWT.PUSH);
     buttonRules.setFont(buttonFont);
     buttonRules.setText("Правила игры");
     buttonRules.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
@@ -80,8 +84,8 @@ public class Menu {
     griddataButtonReplay.horizontalAlignment = GridData.CENTER;
     griddataButtonReplay.heightHint = 65;
     griddataButtonReplay.widthHint = 350;
-    Button buttonReplay = new Button(shell, SWT.PUSH);
-    buttonReplay.setText("Воспроизвести игру");
+    buttonReplay = new Button(shell, SWT.PUSH);
+    buttonReplay.setText("Сохраненные игры");
     buttonReplay.setFont(buttonFont);
     buttonReplay.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
     buttonReplay.setLayoutData(griddataButtonReplay);
@@ -98,7 +102,7 @@ public class Menu {
     griddataButtonComputer.horizontalAlignment = GridData.CENTER;
     griddataButtonComputer.heightHint = 65;
     griddataButtonComputer.widthHint = 350;
-    Button buttonComputer = new Button(shell, SWT.PUSH);
+    buttonComputer = new Button(shell, SWT.PUSH);
     buttonComputer.setText("Игрок против компьютера");
     buttonComputer.setFont(buttonFont);
     buttonComputer.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
@@ -107,26 +111,30 @@ public class Menu {
     griddataButtonPlayers.horizontalAlignment = GridData.CENTER;
     griddataButtonPlayers.heightHint = 65;
     griddataButtonPlayers.widthHint = 350;
-    Button buttonPlayers = new Button(shell, SWT.PUSH);
+    buttonPlayers = new Button(shell, SWT.PUSH);
     buttonPlayers.setText("Игрок против игрока");
     buttonPlayers.setFont(buttonFont);
     buttonPlayers.setBackground(shell.getDisplay().getSystemColor(SWT.COLOR_DARK_MAGENTA));
     buttonPlayers.setLayoutData(griddataButtonPlayers);
+    setListeners();
+    shell.pack();
+    shell.setSize(820, 920);
+  }
+
+  private void setListeners() {
     Listener listener = new Listener() {
       public void handleEvent(Event event) {
         if (event.widget == buttonRules) {
           Rules rules = new Rules(display, shell);
           rules.Show();
         } else if (event.widget == buttonReplay) {
-          int mode = 0;
           try {
             file.openToRead();
-            mode = file.readInt();
           } catch (FileNotFoundException e) {
             e.printStackTrace();
           }
-          Replay replay = new Replay(mode, display, shell);
-          replay.Show();
+          SavedGames savedGames = new SavedGames(display, shell);
+          savedGames.Show();
         } else if (event.widget == buttonComputer) {
           Computer computer = new Computer(display, shell);
           computer.Show();
@@ -140,7 +148,5 @@ public class Menu {
     buttonReplay.addListener(SWT.Selection, listener);
     buttonComputer.addListener(SWT.Selection, listener);
     buttonPlayers.addListener(SWT.Selection, listener);
-    shell.pack();
-    shell.setSize(820, 920);
   }
 }
