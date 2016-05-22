@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_48f5d7ea",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-05-22T22:29:18Z",
+      "side": 1,
+      "message": "move it to constructor",
+      "range": {
+        "startLine": 16,
+        "startChar": 14,
+        "endLine": 16,
+        "endChar": 22
+      },
+      "revId": "f6f0f8507300df278722a7d21158b13b8258de66",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_88ef5f1d",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-05-22T22:29:18Z",
+      "side": 1,
+      "message": "can be defined",
+      "range": {
+        "startLine": 119,
+        "startChar": 20,
+        "endLine": 119,
+        "endChar": 21
+      },
+      "revId": "f6f0f8507300df278722a7d21158b13b8258de66",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_68f2db07",
+        "filename": "ComputerPlay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-05-22T22:29:18Z",
+      "side": 1,
+      "message": "method names should begin with lower case letter",
+      "range": {
+        "startLine": 236,
+        "startChar": 19,
+        "endLine": 236,
+        "endChar": 34
+      },
+      "revId": "f6f0f8507300df278722a7d21158b13b8258de66",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_08dc6f71",
+        "filename": "FileClass.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-05-22T22:29:18Z",
+      "side": 1,
+      "message": "to constructor, and lower case, cuz it not a constant",
+      "range": {
+        "startLine": 13,
+        "startChar": 18,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "f6f0f8507300df278722a7d21158b13b8258de66",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_e8e6eb42",
+        "filename": "GameWindow.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-05-22T22:29:18Z",
+      "side": 1,
+      "message": "array of buttons ?",
+      "range": {
+        "startLine": 39,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "f6f0f8507300df278722a7d21158b13b8258de66",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_c8e1e72b",
+        "filename": "Number.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-05-22T22:29:18Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 20,
+        "startChar": 12,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "f6f0f8507300df278722a7d21158b13b8258de66",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_a8d3435f",
+        "filename": "Players.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-05-22T22:29:18Z",
+      "side": 1,
+      "message": "..",
+      "range": {
+        "startLine": 81,
+        "startChar": 10,
+        "endLine": 82,
+        "endChar": 5
+      },
+      "revId": "f6f0f8507300df278722a7d21158b13b8258de66",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_88d63f4d",
+        "filename": "Replay.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-05-22T22:29:18Z",
+      "side": 1,
+      "message": "it can be an array of buttons..\n\nArrayList[Button] buttons;\nbuttons.forEach(entry-\u003eentry.setEnabled(false))\n\n2 lines vs 10",
+      "revId": "f6f0f8507300df278722a7d21158b13b8258de66",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_68c9bbab",
+        "filename": "ScalaStatistic.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1007575
+      },
+      "writtenOn": "2016-05-22T22:29:18Z",
+      "side": 1,
+      "message": "trailing space",
+      "range": {
+        "startLine": 9,
+        "startChar": 79,
+        "endLine": 9,
+        "endChar": 82
+      },
+      "revId": "f6f0f8507300df278722a7d21158b13b8258de66",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
